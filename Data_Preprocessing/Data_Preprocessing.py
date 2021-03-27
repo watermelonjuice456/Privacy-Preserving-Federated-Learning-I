@@ -354,4 +354,4 @@ def train_validation_scaling():
 
 generate_test_without_scaling()
 generate_train_validation_without_scaling()
-train_validation_scaling
+train_validation_scaling()
