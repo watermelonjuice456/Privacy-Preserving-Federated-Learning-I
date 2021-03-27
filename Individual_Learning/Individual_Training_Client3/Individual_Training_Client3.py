@@ -28,18 +28,18 @@ def build_model():
     return model
 
 def train_model(epochs):
-    train_data = pd.read_csv('../train_validation_test_minmax/train_centralized.csv')
+    train_data = pd.read_csv('../../train_validation_test_minmax/train_client3.csv')
     train_data = train_data.sample(frac = 1)
     print('reading train_data')
     print(train_data)
 
-    validation_data = pd.read_csv('../train_validation_test_minmax/validation_centralized.csv')
+    validation_data = pd.read_csv('../../train_validation_test_minmax/validation_client3.csv')
     validation_data = validation_data.sample(frac=1)
     print('reading validation_data')
     print(validation_data)
 
     model = build_model()
-    model.load_weights('../initial_weight/weight.h5')
+    model.load_weights('../../initial_weight/weight.h5')
     print('initial weight')
     print(model.get_weights())
 
@@ -50,21 +50,21 @@ def train_model(epochs):
     print(train_data.iloc[:, :-2])
     print('data for validation')
     print(validation_data.iloc[:, :-2])
-    #os.mkdir('centralized_model')
-    checkpoint = ModelCheckpoint(filepath='centralized_model/model_{epoch:04d}.h5', period = 1)
+    #os.mkdir('client3_model')
+    checkpoint = ModelCheckpoint(filepath='client3_model/model_{epoch:04d}.h5', period = 1)
 
     history = model.fit(train_data.iloc[:, :-2], train_data.iloc[:, :-2],
-                            batch_size=1024,
+                            batch_size=349,
                             epochs=epochs,
                             validation_data=(validation_data.iloc[:, :-2], validation_data.iloc[:, :-2]),
                             callbacks=[checkpoint]
                         )
 
-    np.save('history_epoch_{}_batchsize_1024_minmax.npy'.format(epochs), history.history)
+    np.save('history_epoch_{}_client3.npy'.format(epochs), history.history)
 
 
 def threshold_calculation(Path):
-    validation_data = pd.read_csv('../train_validation_test_minmax/validation_centralized.csv')
+    validation_data = pd.read_csv('../../train_validation_test_minmax/validation_client3.csv')
     validation_x = validation_data.iloc[:, :-2]
 
     model = keras.models.load_model(Path)
@@ -82,11 +82,11 @@ def threshold_calculation(Path):
 
 def evaluate_model(virus, Path, threshold):
     model = keras.models.load_model(Path)
-    #tr = 0.019348176634629
+    #tr = 0.01874627619088995
     tr = threshold
 
-    if not path.exists('logbook_centralized.csv'):
-        with open('logbook_centralized.csv', 'w', newline='') as logbook:
+    if not path.exists('logbook_client3.csv'):
+        with open('logbook_client3.csv', 'w', newline='') as logbook:
             writer = csv.writer(logbook)
             writer.writerow(['Device Name', 'TN', 'FP', 'FN', 'TP', 'Accuracy', 'Precision', 'Recall'])
         logbook.close()
@@ -98,13 +98,13 @@ def evaluate_model(virus, Path, threshold):
                    'Danmini_Doorbell',
                    'SimpleHome_XCS7_1003_WHT_Security_Camera',
                    'Samsung_SNH_1011_N_Webcam', 'Ennio_Doorbell']
-        test_data = pd.read_csv('../train_validation_test_minmax/test_BASHLITE.csv')
+        test_data = pd.read_csv('../../train_validation_test_minmax/test_BASHLITE_client3.csv')
     elif virus == 'mirai':
         devices = ['Ecobee_Thermostat', 'Provision_PT_737E_Security_Camera', 'Philips_B120N10_Baby_Monitor',
                    'Provision_PT_838_Security_Camera', 'SimpleHome_XCS7_1002_WHT_Security_Camera',
                    'Danmini_Doorbell',
                    'SimpleHome_XCS7_1003_WHT_Security_Camera']
-        test_data = pd.read_csv('../train_validation_test_minmax/test_mirai.csv')
+        test_data = pd.read_csv('../../train_validation_test_minmax/test_mirai_client3.csv')
 
     test_data = test_data.sample(frac = 1)
 
@@ -134,7 +134,7 @@ def evaluate_model(virus, Path, threshold):
         mse_store= pd.DataFrame()
         log.append(temp)
 
-    with open('logbook_centralized.csv', 'a', newline='') as logbook:
+    with open('logbook_client3.csv', 'a', newline='') as logbook:
         writer = csv.writer(logbook)
         writer.writerow(['[' + str(datetime.now()) + ']' + 'testing result of ' + virus])
         for i in range(len(log)):
@@ -142,4 +142,3 @@ def evaluate_model(virus, Path, threshold):
     logbook.close()
 
 train_model(100)
-
