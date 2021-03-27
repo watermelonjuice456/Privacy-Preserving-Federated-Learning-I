@@ -1,0 +1,71 @@
+version: '3.8'
+services:
+  pyseal-demo-server:
+    container_name: pyseal_demo_server
+    restart: always
+    build:
+      context: ./server
+      dockerfile: docker/dev/Dockerfile
+    image: pyseal_demo_server
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./server:/var/www/pyseal-demo-server
+    ports:
+      - "7000:7000"
+    networks:
+      - isolation-network
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://0.0.0.0:7000" ]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+  pyseal-demo-workers:
+    container_name: pyseal_demo_workers
+    depends_on:
+      - pyseal-demo-server
+#        condition: service_healthy
+#      pyseal-demo-aggregator-service:
+#          condition: service_healthy
+    restart: always
+    build:
+      context: ./workers
+      dockerfile: docker/dev/Dockerfile
+    image: pyseal_demo_workers
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./workers:/var/www/pyseal-demo-workers
+    ports:
+      - "7101:7101"
+      - "7102:7102"
+    networks:
+      - isolation-network
+  pyseal-demo-aggregator-service:
+    container_name: pyseal_demo_aggregator_service
+    depends_on:
+      - pyseal-demo-server
+#        condition: service_healthy
+    restart: always
+    build:
+      context: ./Aggregator
+      dockerfile: docker/dev/Dockerfile
+    image: pyseal_demo_aggregator_service
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./Aggregator:/var/www/pyseal-demo-aggregator-service
+    ports:
+      - "7200:7200"
+    networks:
+      - isolation-network
+#    healthcheck:
+#      test: [ "CMD", "curl", "-f", "http://localhost:7200" ]
+#      interval: 15s
+#      timeout: 10s
+#      retries: 5
+
+
+networks:
+  isolation-network:
+    driver: bridge
