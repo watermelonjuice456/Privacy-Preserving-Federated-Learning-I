@@ -58,7 +58,11 @@ The current working implementation is available at the `seal-python` submodule. 
     localhost:7000/evaluate_model
     ```
     The evaluation results will be write to csv files under server file
- 
+    
+## Additional Notes:
+1. The paths defined in this project is for author's self use only. Please define your own path when run the code. 
+
+
 ## To do (for author's self reference only)
 1. Change the path to make the code more user-friendly
 2. Optimize the Data Preprocessing code and Invidiual Training code
