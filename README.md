@@ -23,7 +23,7 @@ In Federated_Learning.py:
 2. Run evaluate_model() to get the TP, FP, TN, FN, accuracy, precision and recall of the model
 
 ## Pyseal_Aggregation_Demo_IoT_Botnet(Secure Aggregation Platform)
-This project is based on the Pyseal_Agg_Demo-Mater
+This project is based on the [Pyseal_Agg_Demo-Master](https://github.com/wangyingwwyy/Privacy-Preserving-Federated-Learning-I/tree/master/PySEAL_Agg_Demo-master/PySEAL_Agg_Demo-master)
 
 ### Subproject division
 
