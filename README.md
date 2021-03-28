@@ -21,6 +21,7 @@ In Individual_Training_Client1.py, Individual_Training_Client2.py, Individual_Tr
 In Federated_Learning.py:
 1. Run train_model(epochs) to run the model
 2. Run evaluate_model() to get the TP, FP, TN, FN, accuracy, precision and recall of the model
+3. Threshold: choose threshold from either centralized learning, indiviudal learning client1,2,3 based on which type of federated learning is used. 
 
 ## Pyseal_Aggregation_Demo_IoT_Botnet(Secure Aggregation Platform)
 This project is based on the [Pyseal_Agg_Demo-Master](https://github.com/wangyingwwyy/Privacy-Preserving-Federated-Learning-I/tree/master/PySEAL_Agg_Demo-master/PySEAL_Agg_Demo-master)
