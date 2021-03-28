@@ -52,8 +52,6 @@ The current working implementation is available at the `seal-python` submodule. 
     ```
     localhost:7104/trainepochs?nepochs=epoch_number
     ```
-    The training is currently set to perform 1 training epoch. 
-    Afterwards, it will automatically send the resulting encrypted weight to the Aggregator service. 
 
 3.  To check the current accuracy of the model stored in the server, we can use the `/evaluate_model` API. 
     ```
