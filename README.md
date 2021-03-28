@@ -2,28 +2,28 @@
 Source code of my Final Year Project - Privacy Preserving Federated Learning(I)
 
 ## Data Preprocessing
-Download raw data at: https://archive.ics.uci.edu/ml/datasets/detection_of_IoT_botnet_attacks_N_BaIoT
+Download raw data at: https://archive.ics.uci.edu/ml/datasets/detection_of_IoT_botnet_attacks_N_BaIoT  
 Run Data_Preprocessing.py to generate all the data files needed for this project
 
 ## Centralized Learning
 In Centralized_Training.py: 
-(1)Run train_model(epochs) to run the model
-(2)Run threshold_calculation(Path) to get the threshold
-(3)Run evaluate_model() to get the TP, FP, TN, FN, accuracy, precision and recall of the model
+1. Run train_model(epochs) to run the model
+2. Run threshold_calculation(Path) to get the threshold
+3. Run evaluate_model() to get the TP, FP, TN, FN, accuracy, precision and recall of the model
 
 ## Individual Learning
 In Individual_Training_Client1.py, Individual_Training_Client2.py, Individual_Training_Client3.py: 
-(1)Run train_model(epochs) to run the model
-(2)Run threshold_calculation(Path) to get the threshold
-(3)Run evaluate_model() to get the TP, FP, TN, FN, accuracy, precision and recall of the model
+1. Run train_model(epochs) to run the model
+2. Run threshold_calculation(Path) to get the threshold
+3. Run evaluate_model() to get the TP, FP, TN, FN, accuracy, precision and recall of the model
 
 ## Federated Learning
 In Federated_Learning.py:
-(1)Run train_model(epochs) to run the model
-(2)Run evaluate_model() to get the TP, FP, TN, FN, accuracy, precision and recall of the model
+1. Run train_model(epochs) to run the model
+2. Run evaluate_model() to get the TP, FP, TN, FN, accuracy, precision and recall of the model
 
 ## Pyseal_Aggregation_Demo_IoT_Botnet(Secure Aggregation Platform)
-This project is based on the [baseline code](baseline/Aggregator.py)  
+This project is based on the Pyseal_Agg_Demo-Mater
 
 ### Subproject division
 
