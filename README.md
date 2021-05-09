@@ -2,7 +2,7 @@
 Source code of my Final Year Project - Privacy Preserving Federated Learning(I)
 
 ## Data Preprocessing
-Download raw data at: https://archive.ics.uci.edu/ml/datasets/detection_of_IoT_botnet_attacks_N_BaIoT  
+Download raw data from: https://archive.ics.uci.edu/ml/datasets/detection_of_IoT_botnet_attacks_N_BaIoT  
 Run Data_Preprocessing.py to generate all the data files needed for this project
 
 ## Centralized Learning
