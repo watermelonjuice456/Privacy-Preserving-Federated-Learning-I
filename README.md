@@ -55,6 +55,7 @@ Please refer to the respective subprojects' readme for more information.
     The evaluation results will be write to csv files under server file
 
 ## Pyseal_Aggregation_Demo_IoT_Botnet(Secure Aggregation Platform)
+Federated Learning that runs on Flask with secure aggregation <br />
 This project is based on the [Pyseal_Agg_Demo-Master](https://github.com/wangyingwwyy/Privacy-Preserving-Federated-Learning-I/tree/master/PySEAL_Agg_Demo-master/PySEAL_Agg_Demo-master)
 
 ### Subproject division
